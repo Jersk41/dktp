@@ -9,6 +9,7 @@ class Penduduk extends Seeder
     public function run()
     {
         $faker = \Faker\Factory::create('id_ID');
+        $wilayah = $this->db->table('setting')->select('kode_wilayah')->get()->getResultArray();
         for ($i=0; $i < 98; $i++) { 
             $jk = $faker->randomElement(['L','P']);
             if($jk == 'L'){
@@ -32,6 +33,7 @@ class Penduduk extends Seeder
                 'pendidikan' => $faker->randomElement(['sd sederajat','smp sederajat','sma sederajat','s1','s2','s3']),
                 'kewarganegaraan' => $faker->randomElement(['wni','wna']),
                 'tgl_pembuatan' => $faker->date(),
+                'kode_wilayah' => $faker->randomElement($wilayah),
                 'status' => $faker->randomElement(['aktif','mutasi'])
             ];
             $this->db->table('penduduk')->insert($fakedata);

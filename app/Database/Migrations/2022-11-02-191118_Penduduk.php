@@ -72,7 +72,17 @@ class Penduduk extends Migration
                 'type'          => 'ENUM',
                 'constraint'    => ['aktif','mutasi']
             ],
-        ])->addKey('nik',true)->createTable('penduduk');
+            'kode_wilayah' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => 20
+            ],
+            'created_by' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => 255
+            ],
+        ])->addKey('nik',true)
+        ->addForeignKey('kode_wilayah','setting','kode_wilayah')
+        ->createTable('penduduk');
     }
 
     public function down()

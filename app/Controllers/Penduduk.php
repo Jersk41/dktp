@@ -6,16 +6,20 @@ use App\Controllers\BaseController;
 use App\Models\Approval;
 use App\Models\DetailPenduduk;
 use App\Models\Penduduk as ModelsPenduduk;
+use App\Models\Setting;
 
 class Penduduk extends BaseController
 {
+    public function __construct() {
+        $this->pendudukModel = model(ModelsPenduduk::class);
+        $this->approvalModel = model(Approval::class);
+        $this->settingModel = model(Setting::class);
+    }
+
     public function index()
     {
         $data['title'] = 'Dashboard';
-        $approvalModel = model(Approval::class);
-        $approvalModel = model(Approval::class);
-
-        $approval = ($approvalModel->getFullApproval([
+        $approval = ($this->approvalModel->getFullApproval([
             'status_approval', 'tanggapan_approval', 'tgl_tanggapan'
         ], ['nama' => session()->get('nama')])[0]) ?? ['status_approval' => ''];
         $data['biodata'] = ($approval['nik']) ?? '';
@@ -50,6 +54,9 @@ class Penduduk extends BaseController
     public function buatktp()
     {
         $data['title'] = 'Buat KTP';
+        $data['wilayah'] = $this->settingModel->query(
+            'SELECT id_setting,kode_wilayah,nama_wilayah,jenis_wilayah,kecamatan,kab_kota,provinsi FROM setting'
+        )->getResultArray();
         return view('penduduk/buat_ktp', $data);
     }
 
@@ -63,19 +70,16 @@ class Penduduk extends BaseController
             'tgl_lahir' => 'trim|required|valid_date[Y-m-d]',
             'jenis_kelamin' => 'trim|required|in_list[L,P]',
             'alamat' => 'trim|required|alpha_numeric_punct',
-            // 'rt_rw' => 'trim|required|is_natural',
+            'wilayah' => 'trim|required',
             'agama' => 'trim|required|in_list[islam,kristen,hindu,buddha,lainnya]',
             'golongan_darah' => 'trim|required|in_list[A,B,AB,O]',
             'status_perkawinan' => 'trim|required|in_list[belum kawin,kawin]',
             'pekerjaan' => 'trim|required|string',
-            // 'pendidikan' => 'trim|required|alpha_numeric_space',
             'kewarganegaraan' => 'trim|required|in_list[wni,wna]',
             'foto' => 'uploaded[foto]|max_size[foto,2048]|ext_in[foto,jpg,png,jpeg]|is_image[foto]',
             'ttd' => 'uploaded[ttd]|max_size[ttd,512]|ext_in[ttd,png]|is_image[ttd]',
         ])) {
-            $pendudukModel = model(ModelsPenduduk::class);
             $detailPendudukModel = model(DetailPenduduk::class);
-            $approvalModel = model(Approval::class);
             $nik = $this->request->getPost('nik');
             $data = [
                 'nik' => $nik,
@@ -94,6 +98,8 @@ class Penduduk extends BaseController
                 'kewarganegaraan' => $this->request->getPost('kewarganegaraan'),
                 'tgl_pembuatan' => date('Y-m-d'),
                 'status' => 'aktif',
+                'kode_wilayah' => $this->request->getPost('wilayah'),
+                'created_by' => session()->get('email'),
             ];
             $detail = [
                 'nik' => $nik,
@@ -110,9 +116,9 @@ class Penduduk extends BaseController
                 $filettd->move(FCPATH . 'uploads', $newName);
                 $detail['ttd'] = $newName;
             }
-            $penduduk = $pendudukModel->createPenduduk($data);
+            $penduduk = $this->pendudukModel->createPenduduk($data);
             $detpenduduk = $detailPendudukModel->createDetailPenduduk($detail);
-            $approval = $approvalModel->createApproval([
+            $approval = $this->approvalModel->createApproval([
                 'status_approval' => 'verifikasi',
                 'tanggapan_approval' => '',
                 'nik' => $nik,

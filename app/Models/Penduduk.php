@@ -30,7 +30,9 @@ class Penduduk extends Model
         'pendidikan',
         'kewarganegaraan',
         'tgl_pembuatan',
-        'status'
+        'status',
+        'kode_wilayah',
+        'created_by',
     ];
 
     // Dates

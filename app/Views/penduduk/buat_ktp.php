@@ -131,6 +131,26 @@ $this->section('content');
                             </div>
                         </div>
                         <div class="form-group row mb-2">
+                            <label for="wilayah" class="form-label col-md-4">Wilayah</label>
+                            <div class="col-md">
+                                <input class="form-control <?= (service('validation')->hasError('wilayah')) ? 'is-invalid' : ''; ?>" name="wilayah" list="listWilayah" id="datalistWilayah" placeholder="Cari wilayah...">
+                                <datalist id="listWilayah">
+                                    <?php
+                                    foreach ($wilayah as $w): ?>
+                                        <option value="<?= $w['kode_wilayah'] ?>"><?= "$w[jenis_wilayah] $w[nama_wilayah] - $w[kecamatan] - $w[kab_kota] - $w[provinsi]" ?></option>
+                                    <?php
+                                    endforeach;
+                                    ?>
+                                </datalist>
+                                <?php
+                                if (service('validation')->hasError('wilayah')) : ?>
+                                    <div class="invalid-feedback">
+                                        <?= service('validation')->getError('wilayah') ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
                             <label for="inputState" class="form-label col-md-4">Golongan Darah</label></br>
                             <div class="col-md mx-0 row row-cols-2">
                                 <div class="form-check col-md-6">
@@ -217,7 +237,7 @@ $this->section('content');
                         <div class="form-group row mb-2">
                             <label for="pekerjaan" class="form-label col-md-4">Pekerjaan</label>
                             <div class="col-md">
-                                <input class="form-control <?= (service('validation')->hasError('pekerjaan')) ? 'is-invalid' : ''; ?>" name="pekerjaan" list="opsiPekerjaan" id="datalistPekerjaan" placeholder="Cari pekerjaan..">
+                                <input class="form-control <?= (service('validation')->hasError('pekerjaan')) ? 'is-invalid' : ''; ?>" name="pekerjaan" list="opsiPekerjaan" id="datalistWilayah" placeholder="Cari pekerjaan..">
                                 <datalist id="opsiPekerjaan">
                                     <option value="Belum Memiliki Pekerjaan">
                                     <option value="Pelajar/Mahasiswa">

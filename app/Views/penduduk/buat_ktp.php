@@ -281,11 +281,14 @@ $this->section('content');
                         <div class="form-group row mb-2">
                             <label for="ttd" class="form-label col-md-4">Tanda Tangan</label>
                             <div class="col-md row mx-0">
-                                <img src="" class="img-thumbnail img-responsive w-100" id="sign-preview" alt="">
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#signatureModel">
-                                    <span class="bi bi-pencil"></span> Gambar Disini
-                                </button>
-                                <input type="hidden" class="form-control <?= (service('validation')->hasError('ttd')) ? 'is-invalid' : ''; ?>" id="signature" name="ttd">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signatureModel">
+                                            <span class="bi bi-pencil"></span> Gambar Disini
+                                        </button>
+                                    </div>
+                                    <input type="file" class="form-control mb-1 <?= (service('validation')->hasError('ttd')) ? 'is-invalid' : ''; ?>" id="signature-image" name="ttd">
+                                </div>
                                 <?php
                                 if (service('validation')->hasError('ttd')) : ?>
                                     <div class="invalid-feedback">
@@ -333,8 +336,6 @@ $this->section('content');
             <div class="modal-body flex justify-content-center">
                 <div id="signature-pad" class="w-100 d-md-flex justify-content-md-center">
                     <canvas id="signature-canvas" width="250px" height="100px" style="border:1px solid black;"></canvas>
-                </div>
-                <div class="m-2">
                 </div>
             </div>
             <div class="modal-footer flex justify-content-center">

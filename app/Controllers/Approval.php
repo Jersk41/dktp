@@ -11,10 +11,12 @@ class Approval extends BaseController
     {
         $approvalModel = model(ApprovalModel::class);
         $data['title'] = 'Approval';
-        $data['approval'] = $approvalModel->getFullApproval();
         if($id){
-            return view('admin/approval_detail');
+            $data['approval'] = $approvalModel->getFullApproval([],['id_approval'=>$id])[0];
+            $data['title'] = 'Detail Approval';
+            return view('admin/approval_detail',$data);
         }
+        $data['approval'] = $approvalModel->getFullApproval();
         return view('admin/approval',$data);
     }
 }

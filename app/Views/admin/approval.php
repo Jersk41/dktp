@@ -39,9 +39,9 @@ $this->section('content');
 						</td>
 						<td><?= $row['tanggapan_approval'] == null ? '-' : $row['tanggapan_approval']; ?></td>
 						<td>
-							<a href="<?= base_url('admin/approval/detail/' . $row['id_approval']) ?>" class="btn btn-outline-primary">Lihat</a>
-							<a href="<?= base_url('admin/approval/edit/' . $row['id_approval']) ?>" class="btn btn-info">Edit</a>
-							<a href="<?= base_url('admin/approval/delete/' . $row['id_approval']) ?>" class="btn btn-warning">Hapus</a>
+							<a href="<?= base_url('main/approval/detail/' . $row['id_approval']) ?>" class="btn btn-outline-primary">Lihat</a>
+							<a href="<?= base_url('main/approval/edit/' . $row['id_approval']) ?>" class="btn btn-info">Edit</a>
+							<a href="<?= base_url('main/approval/delete/' . $row['id_approval']) ?>" class="btn btn-warning">Hapus</a>
 						</td>
 					</tr>
 				<?php endforeach; ?>

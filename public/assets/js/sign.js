@@ -14,9 +14,9 @@ savePNGButton.addEventListener("click", function (event) {
 		event.preventDefault();
 	} else {
 		let canvas = document.getElementById("signature-canvas");
-		let dataUrl = canvas.toDataURL();
-		document.getElementById("signature").value = dataUrl;
-		document.getElementById("sign-preview").setAttribute('src',dataUrl);
-		console.log(dataUrl);
+		var anchor = document.createElement("a");
+		anchor.href = canvas.toDataURL("image/png");
+		anchor.download = "ttd.png";
+		anchor.click();
 	}
 });

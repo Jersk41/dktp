@@ -5,7 +5,7 @@ $this->section('content');
 <div class="container-fluid">
     <?= session()->getFlashdata('msg') ?>
     <div class="row">
-        <div class="col-sm col-md-3 mb-2">
+    <div class="col-sm col-md-3 mb-2">
             <img src="<?= site_url() . 'uploads/' . $approval['foto'] ?>" class="img-thumbnail" alt="">
         </div>
         <div class="col-lg mb-2 card">
@@ -84,31 +84,62 @@ $this->section('content');
                 </div>
             </div>
         </div>
-        <div class="col-12 card">
+
+        <div class="col-lg-12 card">
             <div class="card-header">
-                <h2 class="">Aksi</h2>
+                <h3 class="text-primary">Edit Approval</h3>
+                <p>Status Sekarang : <b class="text-dark"><?= ucfirst($approval['status_approval']) ?></b></p>
             </div>
             <div class="card-body">
-                <form action="<?= site_url("main/approval/update/$approval[id_approval]") ?>" method="post">
+                <form method="POST" action='<?= site_url("main/approval/update/$approval[id_approval]") ?>'>
                     <?php csrf_field(); ?>
-                    <div class="form-group">
-                        <label for="tanggapan">Tanggapan</label>
-                        <input type="text" name="tanggapan_approval" id="tanggapan" class="form-control <?= (service('validation')->getError('nama')) ? 'is-invalid' : ''; ?>" placeholder="Masukkan Tanggapan ..." required>
+                    <div class="form-group mb-2">
+                        <label for="tanggapan_approval">Tanggapan</label>
+                        <input type="text" class="form-control <?= (service('validation')->getError('tanggapan_approval')) ? 'is-invalid' : ''; ?>" id="tanggapan_approval" placeholder="" name="tanggapan_approval" value="<?= set_value('tanggapan_approval',$approval['tanggapan_approval']); ?>">
                         <?php
-                        if (service('validation')->getError('tanngapan_approval')) : ?>
+                        if (service('validation')->getError('tanggapan_approval')) : ?>
                             <div class="invalid-feedback">
-                                <?= service('validation')->getError('tanngapan_approval') ?>
+                                <?= service('validation')->getError('tanggapan_approval') ?>
                             </div>
                         <?php endif; ?>
                     </div>
-                    <div class="form-group mt-2">
-                        <?php
-                        if ($approval['status_approval'] == 'verifikasi') : ?>
-                            <button formaction="<?= site_url("main/approval/update/$approval[id_approval]/proses") ?>" formmethod="POST" class="btn btn-info">Approv</button>
-                        <?php else :  ?>
-                            <button formaction="<?= site_url("main/approval/update/$approval[id_approval]/selesai") ?>" formmethod="POST" class="btn btn-success">Selesai</button>
-                        <?php endif; ?>
-                        <button formaction="<?= site_url("main/approval/update/$approval[id_approval]/ditolak") ?>" formmethod="POST" class="btn btn-outline-danger">Tolak</button>
+                    <div class="form-group mb-2">
+                        <label for="status_approval">Status</label>
+                        <div class="col-md mx-0 row row-cols-2">
+                            <div class="form-check col-md-6">
+                                <input type="radio" class="form-check-input" name="status_approval" value="verifikasi" id="verifikasi" <?= set_radio('status_approval', 'verifikasi',($approval['status_approval'] == 'verifikasi')??false) ?>>
+                                <label class="form-check-label badge bg-secondary text-white" for="verifikasi">
+                                    Verifikasi
+                                </label>
+                            </div>
+                            <div class="form-check col-md-6">
+                                <input type="radio" class="form-check-input" name="status_approval" value="proses" id="proses" <?= set_radio('status_approval', 'proses',($approval['status_approval'] == 'proses')??false) ?>>
+                                <label class="form-check-label badge bg-warning text-dark" for="proses">
+                                    Proses
+                                </label>
+                            </div>
+                            <div class="form-check col-md-6">
+                                <input type="radio" class="form-check-input" name="status_approval" value="selesai" id="selesai" <?= set_radio('status_approval', 'selesai',($approval['status_approval'] == 'selesai')??false) ?>>
+                                <label class="form-check-label badge bg-success text-white" for="selesai">
+                                    Selesai
+                                </label>
+                            </div>
+                            <div class="form-check col-md-6">
+                                <input type="radio" class="form-check-input" name="status_approval" value="ditolak" id="ditolak" <?= set_radio('status_approval', 'ditolak', ($approval['status_approval'] == 'ditolak')??false) ?>>
+                                <label class="form-check-label badge bg-danger text-white" for="ditolak">
+                                    Ditolak
+                                </label>
+                            </div>
+                            <?php
+                            if (service('validation')->hasError('status_approval')) : ?>
+                                <div class="invalid-feedback">
+                                    <?= service('validation')->getError('status_approval') ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div>

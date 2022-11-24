@@ -55,7 +55,7 @@ class Petugas extends Admin
         $data['user'] = $this->userModel->getUser($id_user);
         if ($this->request->getMethod() == 'post' and $this->validate([
             'nama' => 'trim|required|alpha_numeric_space',
-            'email' => 'trim|required|valid_email|is_unique[user.email]',
+            'email' => 'trim|required|valid_email',
             'level' => 'trim|required|in_list[superadmin,admin]',
         ])) {
             $this->update($id_user,$this->request->getPost('nama'),$this->request->getPost('email'),$this->request->getPost('level'));

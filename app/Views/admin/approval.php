@@ -3,6 +3,7 @@ $this->extend('layouts/app');
 $this->section('content');
 ?>
 <div class="container-fluid">
+	<?= session()->getFlashdata('msg') ?>
 	<div class="table-responsive">
 		<table class="datatable">
 			<thead class="thead-dark">
@@ -25,9 +26,9 @@ $this->section('content');
 						<td>
 							<?php
 							if ($row['status_approval'] == 'verifikasi') :
-								echo '<span class="badge bg-secondary">Sedang diverifikasi</span>';
+								echo '<span class="badge bg-warning">Sedang diverifikasi</span>';
 							elseif ($row['status_approval'] == 'proses') :
-								echo '<span class="badge bg-primary">Sedang diproses</span>';
+								echo '<span class="badge bg-info">Sedang diproses</span>';
 							elseif ($row['status_approval'] == 'selesai') :
 								echo '<span class="badge bg-success">Approval Selesai</span>';
 							elseif ($row['status_approval'] == 'ditolak') :
@@ -37,11 +38,17 @@ $this->section('content');
 							endif;
 							?>
 						</td>
-						<td><?= $row['tanggapan_approval'] == null ? '-' : $row['tanggapan_approval']; ?></td>
+						<td><?= ($row['tanggapan_approval']) ?? '-' ?></td>
 						<td>
-							<a href="<?= base_url('main/approval/detail/' . $row['id_approval']) ?>" class="btn btn-outline-primary">Lihat</a>
-							<a href="<?= base_url('main/approval/edit/' . $row['id_approval']) ?>" class="btn btn-info">Edit</a>
-							<a href="<?= base_url('main/approval/delete/' . $row['id_approval']) ?>" class="btn btn-warning">Hapus</a>
+							<a href="<?= base_url('main/approval/detail/' . $row['id_approval']) ?>" class="btn btn-primary">
+								<span class="bi bi-eye-fill"></span> Lihat
+							</a>
+							<a href="<?= base_url('main/approval/edit/' . $row['id_approval']) ?>" class="btn btn-info">
+								<span class="bi bi-pencil-fill"></span> Edit
+							</a>
+							<a href="<?= base_url('main/approval/delete/' . $row['id_approval']) ?>" class="btn btn-outline-danger">
+								<span class="bi bi-trash-fill"></span> Hapus
+							</a>
 						</td>
 					</tr>
 				<?php endforeach; ?>

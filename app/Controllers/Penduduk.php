@@ -38,9 +38,9 @@ class Penduduk extends BaseController
                 $data['badge'] = '<span class="badge bg-success text-dark">Selesai</span>';
                 $data['pesan'] = 'Approval telah selesai, Terimakasih Telah Menggunakan Layanan Kami';
                 break;
-            case 'selesai':
+            case 'ditolak':
                 $data['badge'] = '<span class="badge bg-dark text-white">Ditolak</span>';
-                $data['pesan'] = 'Approval ditolak dikarenakan : $approval[tanggapan_app]';
+                $data['pesan'] = "Approval ditolak dikarenakan : $approval[tanggapan_approval]";
                 break;
             default:
                 $data['badge'] = '<span class="badge bg-danger text-dark">Data Belum Lengkap</span>';

@@ -54,6 +54,9 @@ $routes->group('main',['filter' => 'auth'], static function ($routes) {
     $routes->get('petugas/delete/(:num)', 'Petugas::delete/$1');
     $routes->get('approval', 'Approval::index');
     $routes->get('approval/detail/(:num)', 'Approval::index/$1');
+    $routes->get('approval/edit/(:num)', 'Approval::edit/$1');
+    $routes->post('approval/update/(:any)', 'Approval::update/$1');
+    $routes->get('approval/delete/(:num)', 'Approval::delete/$1');
 },);
 $routes->get('/test', 'Auth::test');
 $routes->get('/logout', 'Auth::logout');

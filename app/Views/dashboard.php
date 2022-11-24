@@ -89,7 +89,6 @@ $this->section('content');
             ?>
             <div class="mt-4 p-5 bg-primary text-white rounded">
                 <h2><b>Status Pembuatan KTP</b> <?= $badge ?></h2>
-                
                 <table class="table table-responsive table-borderless text-white">
                     <thead>
                         <tr class="border-bottom border-white">

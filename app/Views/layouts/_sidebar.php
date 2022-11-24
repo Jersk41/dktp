@@ -43,10 +43,10 @@
                 </a>
                 <ul id="ktp-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <a href="<?= site_url('dktp/buatktp') ?>">
-                        <i class="bi bi-circle"></i><span>Pengajuan</span>
+                        <i class="bi bi-circle"></i><span>Buat KTP</span>
                     </a>
-                    <a href="<?= site_url('dktp/status')?>">
-                        <i class="bi bi-circle"></i><span>Status Pengajuan</span>
+                    <a href="<?= site_url('dktp/detail')?>">
+                        <i class="bi bi-circle"></i><span>Detail Pembuatan KTP</span>
                     </a>
                 </ul>
             </li>

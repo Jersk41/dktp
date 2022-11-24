@@ -61,3 +61,40 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - [mbstring](http://php.net/manual/en/mbstring.installation.php)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
 - xml (enabled by default - don't turn it off)
+
+## Fitur-fitur Aplikasi DKTP
+Ada 3 Hak Akses
+- Superadmin
+- Admin (petugas/operator daerah)
+- User (penduduk/pembuat ktp)
+
+**Superadmin:**
+1. Login/logout [x]
+2. Melihat Profil [x]
+3. Mengelola Petugas [x]
+    - Melihat
+    - Menambah
+    - Mengubah
+    - Menghapus
+4. Mengelola Approval [x]
+    - Melihat (Detail)
+    - Mengubah (Status **Mengapprove/menolak** beserta tanggapannya)
+    - Menghapus
+
+**Admin:**
+1. Login/logout [x]
+2. Melihat Profil [x]
+3. Mengelola Approval [x]
+    - Melihat (Detail)
+    - Mengubah (Status **Mengapprove/menolak** beserta tanggapannya)
+    - Menghapus
+4. Melihat 'Setting'-an wilayah admin tersebut [ ]
+5. Mengubah 'setting' (data wilayah admin tersebut) [ ]
+
+**User:**
+1. Login/logout [x]
+2. Registrasi Akun [x]
+3. Melihat Profil [x]
+4. Membuat KTP (membuat approval) [x]
+5. Melihat Status Approval [x]
+6. Mutasi [ ]

@@ -6,13 +6,6 @@ use App\Controllers\BaseController;
 
 class Petugas extends Admin
 {
-    protected $userModel;
-
-    public function __construct()
-    {
-        $this->userModel = model(User::class);
-    }
-
     public function index()
     {
         $data['title'] = 'Petugas';

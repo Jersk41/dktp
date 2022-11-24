@@ -32,6 +32,7 @@ class Auth extends BaseController
         $data = $this->userModel->getSpesifikUser(['email' => $email]);
         if ($data && password_verify($password, $data['password'])) {
             $this->session->set([
+                'id'    => $data['id_user'],
                 'nama' => ($data['nama']) ?? $data['nama_user'],
                 'email' => $data['email'],
                 'level' => $data['level'],

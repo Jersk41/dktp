@@ -9,14 +9,21 @@ use App\Models\User;
 
 class Admin extends BaseController
 {
+    public $userModel;
+
+    public function __construct()
+    {
+        $this->userModel = model(User::class);
+    }
+
     public function index()
     {
         $data['title'] = 'Dashboard';
-        $userModel = model(User::class);
+        // $userModel = model(User::class);
         $approvalModel = model(Approval::class);
         // $pendudukModel = model(Penduduk::class);
-        $data['petugas'] = count($userModel->filterUser(['level'=>'admin']));
-        $data['penduduk'] = count($userModel->filterUser(['level'=>'user']));
+        $data['petugas'] = count($this->userModel->filterUser(['level'=>'admin']));
+        $data['penduduk'] = count($this->userModel->filterUser(['level'=>'user']));
         $data['approval'] = count($approvalModel->getApproval());
         $data['approval_proses'] = count($approvalModel->filterApproval(['status_approval'=>'proses']));
         $data['approval_selesai'] = count($approvalModel->filterApproval(['status_approval'=>'selesai']));
@@ -26,8 +33,8 @@ class Admin extends BaseController
     public function profile()
     {
         $data['title'] = 'Profile';
-        $userModel = model(User::class);
-        $data['user'] = $userModel->getSpesifikUser(['email'=>session()->get('email')]);
+        // $userModel = model(User::class);
+        $data['user'] = $this->userModel->getSpesifikUser(['email'=>session()->get('email')]);
         return view('profil',$data);
     }
 }

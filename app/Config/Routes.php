@@ -55,15 +55,18 @@ $routes->group('main',['filter' => 'auth'], static function ($routes) {
         $routes->match(['get','post'],'edit/(:num)', 'Petugas::edit/$1');
         $routes->get('delete/(:num)', 'Petugas::delete/$1');
     });
-    // $routes->match(['get','post'],'petugas', 'Petugas::index');
-    // $routes->match(['get','post'],'petugas/edit/(:num)', 'Petugas::edit/$1');
-    // $routes->get('petugas/delete/(:num)', 'Petugas::delete/$1');
     $routes->group('approval',static function ($routes){
         $routes->get('/', 'Approval::index');
         $routes->get('detail/(:num)', 'Approval::index/$1');
         $routes->get('edit/(:num)', 'Approval::edit/$1');
         $routes->post('update/(:any)', 'Approval::update/$1');
         $routes->get('delete/(:num)', 'Approval::delete/$1');
+    });
+    $routes->group('setting',static function ($routes){
+        $routes->get('/', 'Setting::index');
+        $routes->get('edit/(:any)', 'Setting::form/$1');
+        $routes->post('create', 'Setting::save');
+        $routes->post('update/(:any)', 'Setting::update/$1');
     });
 });
 $routes->get('/test', 'Auth::test');

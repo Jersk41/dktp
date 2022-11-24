@@ -27,7 +27,7 @@ class Setting extends Model
         'nip_sekretaris',
         'nama_sekretaris',
         'ttd_sekretaris',
-        'id_admin'
+        'id_user'
     ];
 
     // Dates

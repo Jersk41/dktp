@@ -21,7 +21,7 @@
             <?php
             elseif (session()->get('level') == 'admin') : ?>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="<?= site_url('profile') ?>">
+                    <a class="nav-link collapsed" href="<?= site_url('main/setting') ?>">
                         <span>
                             <i class="bi bi-gear"></i> Instansi
                         </span>

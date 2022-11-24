@@ -25,12 +25,12 @@ class Auth implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if(!session()->get('nama')){
+        if(!session()->get('email')){
             return redirect()->to('/');
         }else{
-            if(current_url(true)->getSegments()[0]=='main' and session()->get('level') == 'penduduk'){
-                return redirect()->to('dashboard');
-            }elseif(current_url(true)->getSegments()[0]=='dashboard' and session()->get('level') != 'penduduk'){
+            if(current_url(true)->getSegments()[0]=='main' and session()->get('level') == 'user'){
+                return redirect()->to('dtkp');
+            }elseif(current_url(true)->getSegments()[0]=='dktp' and session()->get('level') != 'user'){
                 return redirect()->to('main');
             }
         }

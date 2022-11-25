@@ -64,7 +64,7 @@ class Auth extends BaseController
     {
         $data['title'] = 'Register';
         if ($this->request->getMethod() == 'post' and $this->validate([
-            'nik' => 'trim|required|numeric|is_unique[penduduk.nik]',
+            'nik' => 'trim|required|is_natural|exact_length[15,16,17]|is_unique[penduduk.nik]',
             'nama' => 'trim|required|alpha_numeric_space',
             'email' => 'trim|required|valid_email|is_unique[user.email]',
             'password' => 'trim|required|alpha_numeric_space|min_length[6]|max_length[15]',

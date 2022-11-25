@@ -37,7 +37,7 @@ class Petugas extends Admin
         $user = [
             'nama_user' => $nama,
             'email' => $email,
-            'password' => $password,
+            'password' => password_hash($password,PASSWORD_DEFAULT),
             'level' => $level,
             'active' => 1,
             'foto_profil' => 'avatar.svg',

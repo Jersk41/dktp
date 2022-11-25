@@ -53,7 +53,7 @@ class User extends Seeder
                 'password' => password_hash('Penduduk1',PASSWORD_DEFAULT),
                 'no_telp' => $faker->phoneNumber,
                 'level' => $faker->randomElement(['superadmin','admin','user']),
-                'foto_profil' => urlencode($faker->name).'.jpg',
+                'foto_profil' => 'avatar.svg',
                 'active' => 0,
                 'verify_key' => bin2hex(random_bytes(3)),
                 'time_verified' => time(),

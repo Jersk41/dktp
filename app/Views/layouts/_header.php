@@ -77,7 +77,7 @@
             <li class="nav-item dropdown pe-3">
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="<?= site_url('assets/img/') . session()->get('foto') ?>" alt="Profile" class="rounded-circle">
+                    <img src="<?= site_url('assets/img/') . session()->get('foto_profil') ?>" alt="Profile" class="rounded-circle">
                     <span class="d-none d-md-block dropdown-toggle ps-2"><?= session()->get('nama') ?> </span>
                 </a><!-- End Profile Iamge Icon -->
 
@@ -91,7 +91,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="profile">
+                        <a class="dropdown-item d-flex align-items-center" href="<?= site_url((session()->get('level') != 'user') ? 'main' : 'dktp') ?>/profile">
                             <i class="bi bi-person"></i>
                             <span>My Profile</span>
                         </a>
@@ -99,13 +99,12 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-
-                    <li>
+                    <!-- <li>
                         <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                             <i class="bi bi-gear"></i>
                             <span>Account Settings</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <hr class="dropdown-divider">
                     </li>

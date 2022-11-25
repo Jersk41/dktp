@@ -83,7 +83,8 @@ class Auth extends BaseController
                 'level' => 'user',
                 'foto_profil' => 'avatar.svg',
                 'verify_key' => $kodeotp,
-                'time_verified' => now()
+                'time_verified' => time(),
+                'created_by' => $email
             ]);
             $penduduk_created = $pendudukModel->createPenduduk([
                 'nik' => $nik,
@@ -168,7 +169,7 @@ class Auth extends BaseController
         }
     }
 
-    private function generateOTP()
+    public function generateOTP()
     {
         return bin2hex(random_bytes(3));
     }

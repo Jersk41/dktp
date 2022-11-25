@@ -20,7 +20,7 @@ class Penduduk extends BaseController
     {
         $data['title'] = 'Dashboard';
         $approval = ($this->approvalModel->getFullApproval([
-            'status_approval', 'tanggapan_approval', 'tgl_tanggapan'
+            'penduduk.nik','foto','sidik_jari','status_approval', 'tanggapan_approval', 'tgl_tanggapan'
         ], ['created_by' => session()->get('email')])[0]) ?? ['status_approval' => ''];
         $data['biodata'] = ($approval['nik']) ?? '';
         $data['foto'] = ($approval['foto']) ?? '';

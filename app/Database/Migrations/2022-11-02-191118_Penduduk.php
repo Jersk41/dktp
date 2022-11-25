@@ -74,7 +74,8 @@ class Penduduk extends Migration
             ],
             'kode_wilayah' => [
                 'type'          => 'VARCHAR',
-                'constraint'    => 20
+                'constraint'    => 20,
+                'null'          => true
             ],
             'created_by' => [
                 'type'          => 'VARCHAR',

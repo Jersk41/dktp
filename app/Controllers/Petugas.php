@@ -9,7 +9,7 @@ class Petugas extends Admin
     public function index()
     {
         $data['title'] = 'Petugas';
-        $data['users'] = $this->userModel->filterUser(['level !='=>'user']);
+        $data['users'] = $this->userModel->filterUser(['level !=' => 'user']);
         if ($this->request->getMethod() == 'post' and $this->validate([
             'nama' => 'trim|required|alpha_numeric_space',
             'email' => 'trim|required|valid_email|is_unique[user.email]',
@@ -33,11 +33,17 @@ class Petugas extends Admin
 
     private function add($nama, $email, $password, $level)
     {
+        $kodeotp = bin2hex(random_bytes(3));
         $user = [
             'nama_user' => $nama,
             'email' => $email,
             'password' => $password,
             'level' => $level,
+            'active' => 1,
+            'foto_profil' => 'avatar.svg',
+            'verify_key' => $kodeotp,
+            'time_verified' => time(),
+            'created_by' => $email
         ];
         return $this->userModel->createUser($user);
     }
@@ -51,20 +57,20 @@ class Petugas extends Admin
             'email' => 'trim|required|valid_email',
             'level' => 'trim|required|in_list[superadmin,admin]',
         ])) {
-            $this->update($id_user,$this->request->getPost('nama'),$this->request->getPost('email'),$this->request->getPost('level'));
+            $this->update($id_user, $this->request->getPost('nama'), $this->request->getPost('email'), $this->request->getPost('level'));
         }
         $data['validation'] = $this->validator;
-        return view('admin/edit_petugas', $data);    
+        return view('admin/edit_petugas', $data);
     }
 
-    private function update($id,$nama, $email, $level)
+    private function update($id, $nama, $email, $level)
     {
         $user = [
             'nama_user' => $nama,
             'email' => $email,
             'level' => $level,
         ];
-        if ($this->userModel->updateUser($id,$user)) {
+        if ($this->userModel->updateUser($id, $user)) {
             return redirect('main/petugas')->with('msg', '<div class="alert alert-primary" role="alert">
                     Data User Berhasil Dirubah!
                     </div>');

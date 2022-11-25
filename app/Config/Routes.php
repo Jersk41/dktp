@@ -42,6 +42,7 @@ $routes->match(['get','post'],'verifikasi','Auth::verifikasi_akun');
 $routes->get('verifikasi/(:any)','Auth::verify_otp/$1');
 $routes->group('dktp', ['filter' => 'auth'], static function ($routes) {
     $routes->get('/', 'Penduduk::index');
+    $routes->get('profile', 'Admin::profile');
     $routes->get('buatktp', 'Penduduk::buatktp');
     $routes->post('buatktp', 'Penduduk::submitdata');
     $routes->get('detail', 'Penduduk::detail');

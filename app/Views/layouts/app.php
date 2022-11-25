@@ -19,13 +19,15 @@
 
             <nav>
                 <ol class="breadcrumb">
-                    <!-- <li class="breadcrumb-item"><a href="<?= base_url(current_url(true)->getSegments()[0].'/dashboard') ?>">Home</a></li> -->
                     <?php
                     $base = (session()->get('level') != 'user')? 'main' : 'dktp' ;
-                    for ($i = 0; $i < count($segments); $i++) :
-                        $active_page = ($i===(count($segments)-1)) ? 'active' : '' ;
+                    echo '<li class="breadcrumb-item">
+                    <a href="' . site_url($base) . '">'. ucwords($base) .'</a>
+                    </li>';
+                    for ($i = 1; $i < count($segments); $i++) :
+                        $active_page = ($i===(count($segments)-1)) ? 'active' : '' ; 
                         echo '<li class="breadcrumb-item '.$active_page.'">
-                        <a href="' . base_url("/$base/$segments[$i]") . '">'. ucwords($segments[$i]) .'</a>
+                        <a href="' . site_url("$base/$segments[$i]") . '">'. ucwords($segments[$i]) .'</a>
                         </li>';
                     endfor;
                     ?>

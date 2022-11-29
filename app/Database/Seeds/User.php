@@ -45,20 +45,20 @@ class User extends Seeder
         ];
         $this->db->table('user')->insertBatch($data);
         // dummy data
-        $faker = \Faker\Factory::create('id_ID');
-        for ($i=0; $i < 98; $i++) { 
-            $fakedata = [
-                'nama_user' => $faker->name,
-                'email' => $faker->safeEmail,
-                'password' => password_hash('Penduduk1',PASSWORD_DEFAULT),
-                'no_telp' => $faker->phoneNumber,
-                'level' => $faker->randomElement(['superadmin','admin','user']),
-                'foto_profil' => 'avatar.svg',
-                'active' => 0,
-                'verify_key' => bin2hex(random_bytes(3)),
-                'time_verified' => time(),
-            ];
-            $this->db->table('user')->insert($fakedata);
-        }
+        // $faker = \Faker\Factory::create('id_ID');
+        // for ($i=0; $i < 98; $i++) { 
+        //     $fakedata = [
+        //         'nama_user' => $faker->name,
+        //         'email' => $faker->safeEmail,
+        //         'password' => password_hash('Penduduk1',PASSWORD_DEFAULT),
+        //         'no_telp' => $faker->phoneNumber,
+        //         'level' => $faker->randomElement(['superadmin','admin','user']),
+        //         'foto_profil' => 'avatar.svg',
+        //         'active' => 0,
+        //         'verify_key' => bin2hex(random_bytes(3)),
+        //         'time_verified' => time(),
+        //     ];
+        //     $this->db->table('user')->insert($fakedata);
+        // }
     }
 }

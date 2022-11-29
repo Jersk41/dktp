@@ -53,13 +53,14 @@ class Penduduk extends BaseController
         $data['wilayah'] = $this->settingModel->query(
             'SELECT id_setting,kode_wilayah,nama_wilayah,jenis_wilayah,kecamatan,kab_kota,provinsi FROM setting'
         )->getResultArray();
+        $data['penduduk'] = $this->pendudukModel->getSpesifikPenduduk(['created_by'=>session()->get('email')]);
         return view('penduduk/buat_ktp', $data);
     }
 
     public function submitdata()
     {
         if ($this->request->getMethod() == 'post' and $this->validate([
-            'nik' => 'trim|required|is_natural|exact_length[15,16,17]|is_unique[penduduk.nik]',
+            // 'nik' => 'trim|required|is_natural|exact_length[15,16,17]|is_unique[penduduk.nik]',
             'no_kk' => 'trim|required|is_natural|exact_length[15,16,17]|is_unique[penduduk.no_kk]',
             'nama' => 'trim|required|alpha_space',
             'tempat_lahir' => 'trim|required|alpha_space',
@@ -77,8 +78,9 @@ class Penduduk extends BaseController
         ])) {
             $detailPendudukModel = model(DetailPenduduk::class);
             $nik = $this->request->getPost('nik');
+            
             $data = [
-                'nik' => $nik,
+                // 'nik' => $nik,
                 'no_kk' => $this->request->getPost('no_kk'),
                 'nama' => $this->request->getPost('nama'),
                 'tempat_lahir' => $this->request->getPost('tempat_lahir'),
@@ -112,7 +114,7 @@ class Penduduk extends BaseController
                 $filettd->move(FCPATH . 'uploads', $newName);
                 $detail['ttd'] = $newName;
             }
-            $penduduk = $this->pendudukModel->createPenduduk($data);
+            $penduduk = $this->pendudukModel->updatePenduduk($nik,$data);
             $detpenduduk = $detailPendudukModel->createDetailPenduduk($detail);
             $approval = $this->approvalModel->createApproval([
                 'status_approval' => 'verifikasi',

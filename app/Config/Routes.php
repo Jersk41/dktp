@@ -69,6 +69,11 @@ $routes->group('main',['filter' => 'auth'], static function ($routes) {
         $routes->post('create', 'Setting::save');
         $routes->post('update/(:any)', 'Setting::update/$1');
     });
+    $routes->group('report',static function ($routes){
+        $routes->get('/', 'Approval::report');
+        $routes->get('preview', 'Approval::previewreport');
+        $routes->get('download', 'Approval::previewreport/1');
+    });
 });
 $routes->get('/test', 'Auth::test');
 $routes->get('/logout', 'Auth::logout');

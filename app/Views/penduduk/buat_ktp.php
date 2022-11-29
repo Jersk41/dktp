@@ -15,11 +15,12 @@ $this->section('content');
                     <li class="nav-item flex-fill" role="presentation"> <button class="nav-link w-100" id="sidikjari-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-sidikjari" type="button" role="tab" aria-controls="sidikjari" aria-selected="false" tabindex="-1">Sidik Jari</button></li>
                 </ul>
                 <div class="tab-content pt-2" id="formTabContent">
-                    <div class="tab-pane fade active show row needs-validation" id="bordered-justified-biodata" role="tabpanel" aria-labelledby="biodata-tab">
+                    <div class="tab-pane fade active show row" id="bordered-justified-biodata" role="tabpanel" aria-labelledby="biodata-tab">
                         <div class="form-group row mb-2">
                             <label for="nik" class="form-label col-md-4">NIK</label>
                             <div class="col-md">
-                                <input type="text" name="nik" class="form-control <?= (service('validation')->hasError('nik')) ? 'is-invalid' : ''; ?>" id="nik" <?= set_value('nik') ?>>
+                                <input type="hidden" name="nik" value="<?= $penduduk['nik'] ?>">
+                                <input type="text" name="" class="form-control <?= (service('validation')->hasError('nik')) ? 'is-invalid' : ''; ?>" id="nik" value="<?= $penduduk['nik'] ?>" disabled>
                                 <?php
                                 if (service('validation')->hasError('nik')) : ?>
                                     <div class="invalid-feedback">

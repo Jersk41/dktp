@@ -80,6 +80,7 @@ Ada 3 Hak Akses
     - Melihat (Detail)
     - Mengubah (Status **Mengapprove/menolak** beserta tanggapannya)
     - Menghapus
+5. Melihat Laporan (termasuk mendownload) [x]
 
 **Admin:**
 1. Login/logout [x]
@@ -88,8 +89,8 @@ Ada 3 Hak Akses
     - Melihat (Detail)
     - Mengubah (Status **Mengapprove/menolak** beserta tanggapannya)
     - Menghapus
-4. Melihat 'Setting'-an wilayah admin tersebut [ ]
-5. Mengubah 'setting' (data wilayah admin tersebut) [ ]
+4. Melihat 'Setting'-an wilayah admin tersebut [x]
+5. Mengubah 'setting' (data wilayah admin tersebut) [x]
 
 **User:**
 1. Login/logout [x]

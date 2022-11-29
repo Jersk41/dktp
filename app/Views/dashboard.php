@@ -4,12 +4,34 @@ $this->section('content');
 ?>
 <section class="section <?= strtolower($title) ?>">
     <div class="row">
-        <!-- Left side columns -->
-        <div class="row">
+        <?php
+        if (session()->get('level') == 'admin') :
+        ?>
+        <div class="card col-lg-4">
+            <div class="card-body">
+                <h4 class="card-title">Wilayah</h4>
+                <table class="table">
+                    <tr>
+                        <td><b>Wilayah</b></td>
+                        <td><?= $setting['nama_wilayah'] ?></td>
+                    </tr>
+                    <tr>
+                        <td><b>Kecamatan</b></td>
+                        <td><?= $setting['kecamatan'] ?></td>
+                    </tr>
+                    <tr>
+                        <td><b>Kota/Kabupaten</b></td>
+                        <td><?= $setting['kab_kota'] ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <?php endif; ?>
+        <div class="row <?= (session()->get('level') == 'admin') ? 'col-lg-8' : '' ?>">
             <?php
-            if (session()->get('level') != 'user') :
+            if (session()->get('level') == 'superadmin') :
             ?>
-                <div class="col-xxl-3 col-md-4">
+                <div class="col-xxl-3 <?= (session()->get('level') == 'admin') ? 'col-lg-6' : '' ?> col-md-4">
                     <div class="card info-card sales-card">
                         <div class="card-body">
                             <h5 class="card-title">Petugas</h5>
@@ -22,7 +44,11 @@ $this->section('content');
                         </div>
                     </div>
                 </div>
-                <div class="col-xxl-3 col-md-4">
+            <?php
+            endif;
+            if (session()->get('level') != 'user') :
+            ?>
+                <div class="col-xxl-3 <?= (session()->get('level') == 'admin') ? 'col-lg-6' : '' ?> col-md-4">
                     <div class="card info-card sales-card">
                         <div class="card-body">
                             <h5 class="card-title">Penduduk Terdaftar</h5>
@@ -35,7 +61,7 @@ $this->section('content');
                         </div>
                     </div>
                 </div>
-                <div class="col-xxl-3 col-md-4">
+                <div class="col-xxl-3 <?= (session()->get('level') == 'admin') ? 'col-lg-6' : '' ?> col-md-4">
                     <div class="card info-card sales-card">
                         <div class="card-body">
                             <h5 class="card-title">Semua Approval</h5>
@@ -48,7 +74,7 @@ $this->section('content');
                         </div>
                     </div>
                 </div>
-                <div class="col-xxl-3 col-md-4">
+                <div class="col-xxl-3 <?= (session()->get('level') == 'admin') ? 'col-lg-6' : '' ?> col-md-4">
                     <div class="card info-card sales-card">
                         <div class="card-body">
                             <h5 class="card-title">Approval Diproses</h5>
@@ -61,7 +87,7 @@ $this->section('content');
                         </div>
                     </div>
                 </div>
-                <div class="col-xxl-3 col-md-4">
+                <div class="col-xxl-3 <?= (session()->get('level') == 'admin') ? 'col-lg-6' : '' ?> col-md-4">
                     <div class="card info-card sales-card">
                         <div class="card-body">
                             <h5 class="card-title">Approval Selesai</h5>
@@ -75,6 +101,7 @@ $this->section('content');
                     </div>
                 </div>
             <?php elseif (session()->get('level') == 'user') : ?>
+                <div class="row">
                 <div class="mt-4 p-5 bg-primary text-white rounded">
                     <h2><b> Status Pembuatan KTP <?= $badge ?></b></h2>
                     <table class="table table-responsive table-borderless text-white">
@@ -154,7 +181,7 @@ $this->section('content');
                         </li>
                         <li>Jika dalam waktu 2 minggu KTP belum diproses,hubungi admin DKTP atau datang ke kantor kecamatan daerah anda.</li>
                     </ol>
-                </div>
+                </div></div>
             <?php endif; ?>
         </div>
     </div>

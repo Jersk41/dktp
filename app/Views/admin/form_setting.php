@@ -12,9 +12,9 @@ $this->section('content');
                 <div class="form-group row mb-2">
                     <label for="kode_wilayah" class="form-label col-md-4">Kode Wilayah</label>
                     <div class="col-md">
-                        <input type="text" class="form-control <?= (service('validation')->getError('kode_wilayah')) ? 'is-invalid' : ''; ?>" id="kode_wilayah" placeholder="" name="kode_wilayah" value="<?= set_value('kode_wilayah', ($setting['kode_wilayah']) ?? '') ?>" <?= ($setting['kode_wilayah']) ? 'disabled' : '' ?> >
+                        <input type="text" class="form-control <?= (service('validation')->hasError('kode_wilayah')) ? 'is-invalid' : ''; ?>" id="kode_wilayah" placeholder="" name="kode_wilayah" value="<?= set_value('kode_wilayah', ($setting['kode_wilayah']) ?? '') ?>" <?= ($setting['kode_wilayah']) ? 'disabled' : '' ?> >
                         <?php
-                        if (service('validation')->getError('kode_wilayah')) : ?>
+                        if (service('validation')->hasError('kode_wilayah')) : ?>
                             <div class="invalid-feedback">
                                 <?= service('validation')->getError('kode_wilayah') ?>
                             </div>
@@ -24,9 +24,9 @@ $this->section('content');
                 <div class="form-group row mb-2">
                     <label for="nama_wilayah" class="form-label col-md-4">Nama Wilayah</label>
                     <div class="col-md">
-                        <input type="text" class="form-control <?= (service('validation')->getError('nama_wilayah')) ? 'is-invalid' : ''; ?>" id="nama_wilayah" placeholder="" name="nama_wilayah" value="<?= set_value('nama_wilayah', ($setting['nama_wilayah']) ?? '') ?>">
+                        <input type="text" class="form-control <?= (service('validation')->hasError('nama_wilayah')) ? 'is-invalid' : ''; ?>" id="nama_wilayah" placeholder="" name="nama_wilayah" value="<?= set_value('nama_wilayah', ($setting['nama_wilayah']) ?? '') ?>">
                         <?php
-                        if (service('validation')->getError('nama_wilayah')) : ?>
+                        if (service('validation')->hasError('nama_wilayah')) : ?>
                             <div class="invalid-feedback">
                                 <?= service('validation')->getError('nama_wilayah') ?>
                             </div>

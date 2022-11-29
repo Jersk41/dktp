@@ -84,12 +84,12 @@ class Auth extends BaseController
                 'foto_profil' => 'avatar.svg',
                 'verify_key' => $kodeotp,
                 'time_verified' => time(),
-                'created_by' => $email
             ]);
             $penduduk_created = $pendudukModel->createPenduduk([
                 'nik' => $nik,
                 'nama' => $nama,
-                'status' => 'aktif'
+                'status' => 'aktif',
+                'created_by' => $email
             ]);
             if ($user_created && $penduduk_created && $is_email_sended) {
                 return redirect('login')->with('msg', '<div class="alert alert-primary" role="alert">

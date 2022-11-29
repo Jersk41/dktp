@@ -18,6 +18,11 @@
                         </span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<?= site_url('main/report') ?>">
+                        <span><i class="bi bi-card-list"></i> Laporan Approval</span>
+                    </a>
+                </li>
             <?php
             elseif (session()->get('level') == 'admin') : ?>
                 <li class="nav-item">
@@ -27,12 +32,12 @@
                         </span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="<?= site_url('main/approval') ?>">
+                        <span><i class="bi bi-card-list"></i> Approval</span>
+                    </a>
+                </li>
             <?php endif;?>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?= site_url('main/approval') ?>">
-                    <span><i class="bi bi-card-list"></i> Approval</span>
-                </a>
-            </li>
         <?php
         endif;
         if (session()->get('level') == 'user') : ?>

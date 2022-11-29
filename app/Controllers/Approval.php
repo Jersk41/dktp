@@ -4,28 +4,35 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Approval as ApprovalModel;
+use Dompdf\Dompdf;
 
 class Approval extends BaseController
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->approvalModel = model(ApprovalModel::class);
     }
     public function index($id = false)
     {
         $data['title'] = 'Approval';
-        if($id){
-            $data['title'] = 'Detail Approval';
-            $data['approval'] = $this->approvalModel->getFullApproval([],['id_approval'=>$id])[0];
-            return view('admin/approval_detail',$data);
+        if (session()->get('level') == 'superadmin') {
+            return $this->report();
         }
-        $data['approval'] = $this->approvalModel->getFullApproval();
-        return view('admin/approval',$data);
+        if ($id) {
+            $data['title'] = 'Detail Approval';
+            $data['approval'] = $this->approvalModel->getFullApproval([], ['id_approval' => $id])[0];
+            return view('admin/approval_detail', $data);
+        }
+        $settingModel = model(Setting::class);
+        $setting = $settingModel->getSpesifikSetting(['id_user' => session()->get('id')])['kode_wilayah'];
+        $data['approval'] = $this->approvalModel->getFullApproval([], ['setting.kode_wilayah' => $setting]);
+        return view('admin/approval', $data);
     }
 
     public function edit($id)
     {
         $data['title'] = 'Edit Approval';
-        $data['approval'] = $this->approvalModel->getFullApproval([],['id_approval'=>$id])[0];//$this->approvalModel->getApproval($id);
+        $data['approval'] = $this->approvalModel->getFullApproval([], ['id_approval' => $id])[0]; //$this->approvalModel->getApproval($id);
         $data['validation'] = $this->validator;
         return view('admin/edit_approval', $data);
     }
@@ -42,8 +49,8 @@ class Approval extends BaseController
                 'tanggapan_approval' => $this->request->getPost('tanggapan_approval'),
                 // 'tgl_tanggapan' => $sets['tgl_tanggapan'],
                 'tgl_tanggapan' => date('Y-m-d'),
-            ];  
-            if ($this->approvalModel->updateApproval($id,$approval)) {
+            ];
+            if ($this->approvalModel->updateApproval($id, $approval)) {
                 return redirect('main/approval')->with('msg', '<div class="alert alert-primary" role="alert">
                         Data Approval Berhasil Dirubah!
                         </div>');
@@ -66,5 +73,34 @@ class Approval extends BaseController
                     Approval Gagal Dihapus!
                     </div>');
         }
+    }
+
+    public function report()
+    {
+        $data['title'] = 'Laporan Approval';
+        $data['approval'] = $this->approvalModel->report();
+        return view('admin/report', $data);
+    }
+
+    public function previewreport($isdownload = false)
+    {
+        $data['title'] = 'Preview Laporan Approval';
+        $data['approval'] = $this->approvalModel->report();
+
+        $pdf = new Dompdf();
+        $pdf->setPaper('A4', 'landscape');
+        $filename = 'laporan-approval-ktp-'.date('d-m-Y').'.pdf' ;
+        $pdf->loadHtml(view('laporan',$data));
+        $pdf->render();
+        if($isdownload){
+            return $pdf->stream($filename);
+        }
+        return view('laporan',$data);
+    }
+
+    public function download($pdf)
+    {
+        $filename = 'laporan-approval-ktp-'.date('d-m-Y').'.pdf' ;
+        return $pdf->stream($filename);
     }
 }

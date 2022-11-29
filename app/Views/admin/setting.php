@@ -8,7 +8,7 @@ $this->section('content');
         <div class="col-12 card">
             <div class="card-body p-1">
                 <h5 class="card-title">Data Admin:
-                    <a href="<?= site_url("main/setting/edit/$setting[nip_pimpinan]") ?>" class="btn btn-sm btn-primary">
+                    <a href="<?= site_url("main/setting/edit/". ($setting['nip_pimpinan']) ?? '') ?>" class="btn btn-sm btn-primary">
                         <span class="bi bi-pencil-square text-white"></span>
                     </a>
                 </h5>

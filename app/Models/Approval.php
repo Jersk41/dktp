@@ -104,9 +104,10 @@ class Approval extends Model
 
     public function report()
 	{
-		$this->select('approval.*, penduduk.nama,penduduk.tgl_pembuatan');
+		$this->select('approval.*, penduduk.nama,penduduk.tgl_pembuatan,nama_wilayah,jenis_wilayah,kecamatan,kab_kota,provinsi');
 		$this->join('penduduk','penduduk.nik = approval.nik');
+        $this->join('setting',"setting.kode_wilayah = penduduk.kode_wilayah");
 		// $this->join('user','user.id_user = tanggapan.id_user','left');
-		return $this->findAll();	
+		return $this->findAll();
 	}
 }

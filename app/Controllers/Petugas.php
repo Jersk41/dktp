@@ -141,7 +141,7 @@ class Petugas extends Admin
             $rules = [
                 'nama' => 'trim|required|alpha_numeric_space',
                 'email' => 'trim|required|valid_email',
-                'level' => 'trim|required|in_list[superadmin,admin]',
+                // 'level' => 'trim|required|in_list[superadmin,admin]',
             ];
             
         }else{

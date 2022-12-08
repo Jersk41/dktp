@@ -14,7 +14,7 @@ $this->section('content');
                 </h5>
                 <div class="row">
                     <div class="col-lg d-flex align-center align-self-center justify-content-center">
-                        <img src="https://source.unsplash.com/random/240x240" class="img-thumbnail" alt="">
+                        <img src="<?= ($user['foto_profil']) ? site_url().'assets/img/avatar.svg' : 'uploads/'.$user['foto_profil'] ?>" class="img-thumbnail" alt="user-profile">
                     </div>
                     <div class="col-lg d-flex align-center align-self-center justify-content-center">
                         <div class="table-responsive">

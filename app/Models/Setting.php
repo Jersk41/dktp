@@ -38,21 +38,7 @@ class Setting extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [
-        'kode_wilayah' => 'trim|required|is_unique[setting.kode_wilayah]',
-        'nama_wilayah' => 'trim|required|alpha_numeric_space',
-        'jenis_wilayah' => 'trim|required|in_list[desa,kelurahan]',
-        'kecamatan' => 'trim|required|alpha_numeric_space',
-        'kab_kota' => 'trim|required|alpha_numeric_space',
-        'provinsi' => 'trim|required|alpha_numeric_space',
-        'nip_pimpinan' => 'trim|required|is_natural',
-        'nama_pimpinan' => 'trim|required|alpha_numeric_punct',
-        'ttd_pimpinan' => 'uploaded[ttd_pimpinan]|max_size[ttd_pimpinan,512]|ext_in[ttd_pimpinan,png]|is_image[ttd_pimpinan]',
-        'nip_sekretaris' => 'trim|required|is_natural',
-        'nama_sekretaris' => 'trim|required|alpha_numeric_punct',
-        'ttd_sekretaris' => 'uploaded[ttd_sekretaris]|max_size[ttd_sekretaris,512]|ext_in[ttd_sekretaris,png]|is_image[ttd_sekretaris]',
-        'id_user' => 'trim|required|is_natural',
-    ];
+    protected $validationRules      = [];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

@@ -28,7 +28,7 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="<?= site_url('main/setting') ?>">
                         <span>
-                            <i class="bi bi-gear"></i> Instansi
+                            <i class="bi bi-gear"></i> Setting Wilayah
                         </span>
                     </a>
                 </li>

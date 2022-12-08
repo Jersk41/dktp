@@ -15,9 +15,9 @@ $this->section('content');
       </ul>
       <div class="tab-content pt-2" id="formTabContent">
         <div class="tab-pane fade active show row" id="bordered-justified-superadmin" role="tabpanel" aria-labelledby="superadmin-tab">
-          <form class="row g-3 needs-validation" method="POST" action="" novalidate>
+          <form class="row g-3 needs-validation" method="POST" action="<?= site_url('main/petugas/tambah') ?>" novalidate>
             <?= csrf_field() ?>
-            <input type="hidden" name="level" value="superadmin">
+            <!-- <input type="hidden" name="level" value="superadmin"> -->
             <div class="col-12 row mb-2">
               <label for="nama" class="form-label col-md-2">Nama</label>
               <div class="col-md">
@@ -97,9 +97,8 @@ $this->section('content');
           </form>
         </div>
         <div class="tab-pane fade row" id="bordered-justified-admin" role="tabpanel" aria-labelledby="admin-tab">
-          <form class="row g-3 needs-validation" method="POST" action="" novalidate enctype="multipart/form-data">
+          <form class="row g-3 needs-validation" method="POST" action="<?= site_url('main/petugas/tambah/admin') ?>" novalidate enctype="multipart/form-data">
             <?= csrf_field() ?>
-            <input type="hidden" name="level" value="admin">
             <div class="col-12 row mb-2">
               <label for="nama" class="form-label col-md-2">Nama</label>
               <div class="col-md">
@@ -160,19 +159,6 @@ $this->section('content');
                 <?php endif; ?>
               </div>
             </div>
-            <!-- <fieldset class="col-12 row mb-2">
-              <legend class="col-form-label col-md-2">Level</legend>
-              <div class="col-12 col-md row">
-                <div class="form-check col-md-6 col-sm-12">
-                  <input class="form-check-input" type="radio" name="level" id="levelSuperadmin" value="superadmin" required>
-                  <label class="form-check-label" for="levelSuperadmin"> Superadmin </label>
-                </div>
-                <div class="form-check col-md-6 col-sm-12">
-                  <input class="form-check-input" type="radio" name="level" id="levelAdmin" value="admin" checked required>
-                  <label class="form-check-label" for="levelAdmin"> Admin </label>
-                </div>
-              </div>
-            </fieldset> -->
             <hr>
             <h5 class="text-center"><b>Wilayah</b></h5>
             <div class="form-group row mb-2">
@@ -371,7 +357,8 @@ $this->section('content');
               <?php if ($row['email'] == session()->get('email')) : ?>
                 <small>Tidak ada aksi</small>
               <?php else : ?>
-                <a href="<?= site_url('main/petugas/edit/' . $row['id_user']) ?>" class="btn btn-info"> <i class="bi bi-pencil"></i> Edit</a>
+                <!-- <a href="<?= site_url('main/petugas/edit/'. (($row['level'] == 'admin') ? 'admin/' : '') . $row['id_user']) ?>" class="btn btn-info"> <i class="bi bi-pencil"></i> Edit</a> -->
+                <a href="<?= site_url('main/petugas/edit/' . $row['id_user']. (($row['level'] == 'admin') ? '?l=admin' : '')) ?>" class="btn btn-info"> <i class="bi bi-pencil"></i> Edit</a>
                 <a href="<?= site_url('main/petugas/delete/' . $row['id_user']) ?>" class="btn btn-danger"> <i class="bi bi-trash"></i> Hapus</a>
               <?php endif; ?>
             </td>

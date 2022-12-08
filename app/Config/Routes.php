@@ -52,8 +52,13 @@ $routes->group('main',['filter' => 'auth'], static function ($routes) {
     $routes->get('profile', 'Admin::profile');
     $routes->get('dashboard', 'Admin::index');
     $routes->group('petugas',static function ($routes){
-        $routes->match(['get','post'],'/', 'Petugas::index');
+        $routes->get('/', 'Petugas::index');
+        // $routes->match(['get','post'],'/', 'Petugas::index');
+        $routes->post('tambah', 'Petugas::tambah');
+        $routes->post('tambah/admin', 'Petugas::tambah_admin');
         $routes->match(['get','post'],'edit/(:num)', 'Petugas::edit/$1');
+        $routes->post('tambah/admin', 'Petugas::tambah_admin');
+        $routes->match(['get','post'],'edit/admin/(:num)', 'Petugas::edit_admin/$1');
         $routes->get('delete/(:num)', 'Petugas::delete/$1');
     });
     $routes->group('approval',static function ($routes){

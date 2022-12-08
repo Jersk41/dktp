@@ -31,9 +31,20 @@ class Setting extends Admin
             $data['validation'] = $this->validator;
         }
         $data['user'] = $this->userModel->getSpesifikUser(['email' => session()->get('email')]);
-        $data['setting'] = $this->settingModel->getSpesifikSetting([
+        $setting = $this->settingModel->getSpesifikSetting([
             'id_user' => session()->get('id')
         ]);
+        // $data['files'] = new FileCollection([
+        //     FCPATH . 'uploads/'.$setting['ttd_pimpinan'],
+        //     FCPATH . 'uploads/'.$setting['ttd_sekretaris'],
+        // ]);
+        $data['setting'] = $setting;
+
+
+
+        // $data['setting'] = $this->settingModel->getSpesifikSetting([
+        //     'id_user' => session()->get('id')
+        // ]);
         return view('admin/form_setting', $data);
     }
 
@@ -75,7 +86,18 @@ class Setting extends Admin
 
     public function update($id = false)
     {
-        $rules = $this->settingModel->getValidationRules();
+        $rules = [
+            'nama_wilayah' => 'trim|required|alpha_numeric_space',
+            'jenis_wilayah' => 'trim|required|in_list[desa,kelurahan]',
+            'kecamatan' => 'trim|required|alpha_numeric_space',
+            'provinsi' => 'trim|required|alpha_numeric_space',
+            'nip_pimpinan' => 'trim|required|is_natural',
+            'nama_pimpinan' => 'trim|required|alpha_numeric_punct',
+            'ttd_pimpinan' => 'uploaded[ttd_pimpinan]|max_size[ttd_pimpinan,512]|ext_in[ttd_pimpinan,png]|is_image[ttd_pimpinan]',
+            'nip_sekretaris' => 'trim|required|is_natural',
+            'nama_sekretaris' => 'trim|required|alpha_numeric_punct',
+            'ttd_sekretaris' => 'uploaded[ttd_sekretaris]|max_size[ttd_sekretaris,512]|ext_in[ttd_sekretaris,png]|is_image[ttd_sekretaris]',
+        ];
         if(!$id) $rules['kode_wilayah'] = 'trim|required|is_unique[setting.kode_wilayah]';
         if ($this->request->getMethod() == 'post' and $this->validate($rules)) {
             $data = [

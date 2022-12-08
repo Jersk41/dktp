@@ -14,13 +14,13 @@
 # ENVIRONMENT
 #--------------------------------------------------------------------
 
-# CI_ENVIRONMENT = production
+# CI_ENVIRONMENT = development
 
 #--------------------------------------------------------------------
 # APP
 #--------------------------------------------------------------------
 
-# app.baseURL = ''
+# app.baseURL = 'http://localhost:8081'
 # If you have trouble with `.`, you could also use `_`.
 # app_baseURL = ''
 # app.forceGlobalSecureRequests = false
@@ -40,7 +40,7 @@
 #--------------------------------------------------------------------
 
 # database.default.hostname = localhost
-# database.default.database = ci4
+# database.default.database = dktp
 # database.default.username = root
 # database.default.password = root
 # database.default.DBDriver = MySQLi
@@ -48,7 +48,7 @@
 # database.default.port = 3306
 
 # database.tests.hostname = localhost
-# database.tests.database = ci4_test
+# database.tests.database = dktp
 # database.tests.username = root
 # database.tests.password = root
 # database.tests.DBDriver = MySQLi
@@ -98,7 +98,7 @@
 # ENCRYPTION
 #--------------------------------------------------------------------
 
-# encryption.key =
+# encryption.key = hex2bin:0c65de62e21098ef6094b6ef9f46b82991f1f2cf97af7e96c6fcbad35b08823b
 # encryption.driver = OpenSSL
 # encryption.blockSize = 16
 # encryption.digest = SHA512
@@ -138,3 +138,28 @@
 #--------------------------------------------------------------------
 
 # curlrequest.shareOptions = true
+
+# email.fromEmail = 'dummy@localhost'
+# email.fromName = 'Admin DKTP'
+# email.recipients = 
+# email.userAgent = 'DKTP'
+# email.protocol = 'smtp'
+# email.mailPath = 
+# email.SMTPHost = '127.0.0.1'
+# email.SMTPUser = 'dummy@localhost'
+# email.SMTPPass = 'Dummymail'
+# email.SMTPPort = 25
+# email.SMTPTimeout = 
+# email.SMTPKeepAlive = 
+# email.SMTPCrypto = null 
+# email.wordWrap = 
+# email.wrapChars = 
+# email.mailType = 
+# email.charset = 
+# email.validate = 
+# email.priority = 
+# email.CRLF = 
+# email.newline = 
+# email.BCCBatchMode = 
+# email.BCCBatchSize = 
+# email.DSN =

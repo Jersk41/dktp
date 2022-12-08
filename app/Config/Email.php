@@ -9,12 +9,12 @@ class Email extends BaseConfig
     /**
      * @var string
      */
-    public $fromEmail;
+    public $fromEmail = 'contact@digital-ktp.my.id';
 
     /**
      * @var string
      */
-    public $fromName;
+    public $fromName = 'CS DKTP';
 
     /**
      * @var string
@@ -26,14 +26,14 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $userAgent = 'CodeIgniter';
+    public $userAgent = 'DKTP';
 
     /**
      * The mail sending protocol: mail, sendmail, smtp
      *
      * @var string
      */
-    public $protocol = 'mail';
+    public $protocol = 'smtp';
 
     /**
      * The server path to Sendmail.
@@ -47,28 +47,28 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPHost;
+    public $SMTPHost = 'mail.digital-ktp.my.id';
 
     /**
      * SMTP Username
      *
      * @var string
      */
-    public $SMTPUser;
+    public $SMTPUser = 'contact@digital-ktp.my.id';
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass;
+    public $SMTPPass = 'EJhUh5FC5uVbDHa';
 
     /**
      * SMTP Port
      *
      * @var int
      */
-    public $SMTPPort = 25;
+    public $SMTPPort = 465;
 
     /**
      * SMTP Timeout (in seconds)
@@ -89,7 +89,7 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPCrypto = 'tls';
+    public $SMTPCrypto = 'ssl';
 
     /**
      * Enable word-wrap
@@ -131,7 +131,7 @@ class Email extends BaseConfig
      *
      * @var int
      */
-    public $priority = 3;
+    public $priority = 1;
 
     /**
      * Newline character. (Use “\r\n” to comply with RFC 822)

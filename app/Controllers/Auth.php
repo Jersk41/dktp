@@ -56,8 +56,31 @@ class Auth extends BaseController
 
     public function test()
     {
-        $data['user'] = $this->userModel->getUser();
-        return view('test', $data);
+        $kodeotp = $this->generateOTP();
+        $config = new \Config\Email();
+        $email = \Config\Services::email($config);
+        // $email->fromEmail = 'contact@digital-ktp.my.id';
+        $email->setTo('lksywlthzabhr@sinaite.net');
+        $email->setSubject('Kode OTP Verifikasi Akun');
+        $email->setMessage("Kode OTP verifikasi anda adalah $kodeotp \r\n Silahkan Masukkan Kode OTP pada halaman verifikasi akun berikut : " . site_url('verifikasi'));
+        $email->setNewline("\r\n");
+        
+        try {
+            return dd($email,$email->send());
+            // return $this->response->setJSON([
+            //     'message' => 'send email success',
+            //     'recepient' => 'lksywlthzabhr',
+            //     'data' => $email->printDebugger(['headers','body'])
+            // ])->send();
+        } catch (\Throwable $th) {
+            return $this->response->setJSON([
+                'message' => 'send email failed'. $th->getMessage(),
+                'error' => [
+                    'code' => $th->getCode (),
+                    'trace' => $th->getTraceAsString(),
+                ],
+            ])->send();
+        }
     }
 
     public function register()
@@ -150,14 +173,8 @@ class Auth extends BaseController
     private function sendOTPByEmail(string $receiverEmail, $otpCode)
     {
         $email = new Email();
-        $config['fromEmail'] = 'sidikjap@localhost.com';
-        $config['fromName'] = 'Admin DKTP';
-        $config['userAgent'] = 'DKTP';
-        $config['SMTPHost'] = '127.0.0.1';
-        $config['SMTPUser'] = 'sidikjap@localhost.com';
-        $config['SMTPPass'] = 'sidikjaparikm1';
-        $email->initialize($config);
-
+        $config = new \Config\Email();
+        $email = \Config\Services::email($config);
         $email->setTo($receiverEmail);
         $email->setSubject('Kode OTP Verifikasi Akun');
         $email->setMessage("Kode OTP verifikasi anda adalah $otpCode \r\n Silahkan Masukkan Kode OTP pada halaman verifikasi akun berikut : " . site_url('verifikasi'));

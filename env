@@ -26,14 +26,14 @@
 # app.forceGlobalSecureRequests = false
 
 # app.sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler'
-# app.sessionCookieName = 'ci_session'
+ app.sessionCookieName = 'dktp_session'
 # app.sessionExpiration = 7200
 # app.sessionSavePath = null
 # app.sessionMatchIP = false
 # app.sessionTimeToUpdate = 300
 # app.sessionRegenerateDestroy = false
 
-# app.CSPEnabled = false
+ app.CSPEnabled = false
 
 #--------------------------------------------------------------------
 # DATABASE
@@ -119,11 +119,11 @@
 
 # security.csrfProtection = 'cookie'
 # security.tokenRandomize = false
-# security.tokenName = 'csrf_token_name'
+ security.tokenName = 'csrf_token_dktp'
 # security.headerName = 'X-CSRF-TOKEN'
-# security.cookieName = 'csrf_cookie_name'
+ security.cookieName = 'csrf_cookie_dktp'
 # security.expires = 7200
-# security.regenerate = true
+ security.regenerate = true
 # security.redirect = true
 # security.samesite = 'Lax'
 
@@ -138,28 +138,3 @@
 #--------------------------------------------------------------------
 
 # curlrequest.shareOptions = true
-
-# email.fromEmail = 'dummy@localhost'
-# email.fromName = 'Admin DKTP'
-# email.recipients = 
-# email.userAgent = 'DKTP'
-# email.protocol = 'smtp'
-# email.mailPath = 
-# email.SMTPHost = '127.0.0.1'
-# email.SMTPUser = 'dummy@localhost'
-# email.SMTPPass = 'Dummymail'
-# email.SMTPPort = 25
-# email.SMTPTimeout = 
-# email.SMTPKeepAlive = 
-# email.SMTPCrypto = null 
-# email.wordWrap = 
-# email.wrapChars = 
-# email.mailType = 
-# email.charset = 
-# email.validate = 
-# email.priority = 
-# email.CRLF = 
-# email.newline = 
-# email.BCCBatchMode = 
-# email.BCCBatchSize = 
-# email.DSN =

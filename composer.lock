@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5c10aa3814ca5a22782fbea12c254ae",
+    "content-hash": "25bd798679f297b68b0fd00a6a6da2e6",
     "packages": [
         {
-            "name": "codeigniter4/codeigniter4",
-            "version": "dev-develop",
+            "name": "codeigniter4/framework",
+            "version": "v4.2.10",
             "source": {
                 "type": "git",
-                "url": "https://github.com/codeigniter4/CodeIgniter4.git",
-                "reference": "9dd92e04eee4e0a36990ae4dad1c8a0e3d64e3a2"
+                "url": "https://github.com/codeigniter4/framework.git",
+                "reference": "6ffad151a303c5817ad6b2d9b996d07960aff2cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/9dd92e04eee4e0a36990ae4dad1c8a0e3d64e3a2",
-                "reference": "9dd92e04eee4e0a36990ae4dad1c8a0e3d64e3a2",
+                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/6ffad151a303c5817ad6b2d9b996d07960aff2cc",
+                "reference": "6ffad151a303c5817ad6b2d9b996d07960aff2cc",
                 "shasum": ""
             },
             "require": {
@@ -36,13 +36,8 @@
                 "friendsofphp/php-cs-fixer": "~3.13.0",
                 "mikey179/vfsstream": "^1.6",
                 "nexusphp/cs-config": "^3.6",
-                "nexusphp/tachycardia": "^1.0",
-                "php-coveralls/php-coveralls": "^2.5",
-                "phpstan/phpstan": "^1.7.1",
-                "phpunit/phpcov": "^8.2",
                 "phpunit/phpunit": "^9.1",
-                "predis/predis": "^1.1 || ^2.0",
-                "rector/rector": "0.14.6"
+                "predis/predis": "^1.1 || ^2.0"
             },
             "suggest": {
                 "ext-dom": "If you use TestResponse",
@@ -63,13 +58,7 @@
                 "ext-sqlsrv": "If you use SQL Server",
                 "ext-xdebug": "If you use CIUnitTestCase::assertHeaderEmitted()"
             },
-            "default-branch": true,
             "type": "project",
-            "extra": {
-                "branch-alias": {
-                    "dev-develop": "4.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "CodeIgniter\\": "system/"
@@ -78,42 +67,7 @@
                     "**/Database/Migrations/**"
                 ]
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "CodeIgniter\\": "tests/system/",
-                    "CodeIgniter\\AutoReview\\": "tests/AutoReview/",
-                    "Utils\\": "utils/"
-                }
-            },
-            "scripts": {
-                "post-update-cmd": [
-                    "CodeIgniter\\ComposerScripts::postUpdate",
-                    "bash -c \"if [ -f admin/setup.sh ]; then bash admin/setup.sh; fi\""
-                ],
-                "analyze": [
-                    "phpstan analyze",
-                    "rector process --dry-run"
-                ],
-                "sa": [
-                    "@analyze"
-                ],
-                "test": [
-                    "phpunit"
-                ],
-                "cs": [
-                    "php-cs-fixer fix --ansi --verbose --dry-run --diff --config=.php-cs-fixer.user-guide.php",
-                    "php-cs-fixer fix --ansi --verbose --dry-run --diff --config=.php-cs-fixer.no-header.php",
-                    "php-cs-fixer fix --ansi --verbose --dry-run --diff"
-                ],
-                "cs-fix": [
-                    "php-cs-fixer fix --ansi --verbose --diff --config=.php-cs-fixer.user-guide.php",
-                    "php-cs-fixer fix --ansi --verbose --diff --config=.php-cs-fixer.no-header.php",
-                    "php-cs-fixer fix --ansi --verbose --diff"
-                ],
-                "style": [
-                    "@cs-fix"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -121,11 +75,10 @@
             "homepage": "https://codeigniter.com",
             "support": {
                 "forum": "http://forum.codeigniter.com/",
-                "source": "https://github.com/codeigniter4/CodeIgniter4",
                 "slack": "https://codeigniterchat.slack.com",
-                "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
+                "source": "https://github.com/codeigniter4/CodeIgniter4"
             },
-            "time": "2022-11-02T11:30:38+00:00"
+            "time": "2022-11-05T22:23:07+00:00"
         },
         {
             "name": "dompdf/dompdf",
@@ -829,16 +782,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.15.1",
+            "version": "v4.15.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "0ef6c55a3f47f89d7a374e6f835197a0b5fcf900"
+                "reference": "f59bbe44bf7d96f24f3e2b4ddc21cd52c1d2adbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/0ef6c55a3f47f89d7a374e6f835197a0b5fcf900",
-                "reference": "0ef6c55a3f47f89d7a374e6f835197a0b5fcf900",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/f59bbe44bf7d96f24f3e2b4ddc21cd52c1d2adbc",
+                "reference": "f59bbe44bf7d96f24f3e2b4ddc21cd52c1d2adbc",
                 "shasum": ""
             },
             "require": {
@@ -879,9 +832,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.15.1"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.15.2"
             },
-            "time": "2022-09-04T07:30:47+00:00"
+            "time": "2022-11-12T15:38:23+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -996,16 +949,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "9.2.18",
+            "version": "9.2.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "12fddc491826940cf9b7e88ad9664cf51f0f6d0a"
+                "reference": "c77b56b63e3d2031bd8997fcec43c1925ae46559"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/12fddc491826940cf9b7e88ad9664cf51f0f6d0a",
-                "reference": "12fddc491826940cf9b7e88ad9664cf51f0f6d0a",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c77b56b63e3d2031bd8997fcec43c1925ae46559",
+                "reference": "c77b56b63e3d2031bd8997fcec43c1925ae46559",
                 "shasum": ""
             },
             "require": {
@@ -1061,7 +1014,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.18"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.19"
             },
             "funding": [
                 {
@@ -1069,7 +1022,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-10-27T13:35:33+00:00"
+            "time": "2022-11-18T07:47:47+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2550,15 +2503,13 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "codeigniter4/codeigniter4": 20
-    },
+    "minimum-stability": "stable",
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.4 || ^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.1.0"
 }

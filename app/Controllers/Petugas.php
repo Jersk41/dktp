@@ -141,7 +141,6 @@ class Petugas extends Admin
             $rules = [
                 'nama' => 'trim|required|alpha_numeric_space',
                 'email' => 'trim|required|valid_email',
-                'level' => 'trim|required|in_list[superadmin,admin]',
             ];
             
         }else{
@@ -188,7 +187,7 @@ class Petugas extends Admin
         if ($this->request->getMethod() == 'post' and $this->validate([
             'nama' => 'trim|required|alpha_numeric_space',
             'email' => 'trim|required|valid_email',
-            'level' => 'trim|required|in_list[superadmin,admin]',
+            // 'level' => 'trim|required|in_list[superadmin,admin]',
             /* Setting Rule */
             'kode_wilayah' => 'trim|required|is_unique[setting.kode_wilayah]',
             'nama_wilayah' => 'trim|required|alpha_numeric_space',

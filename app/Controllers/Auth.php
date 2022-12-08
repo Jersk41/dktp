@@ -17,7 +17,7 @@ class Auth extends BaseController
         $data['title'] = 'Login';
         if ($this->request->getMethod() == 'post' and $this->validate([
             'email' => 'trim|required|valid_email',
-            'password' => 'trim|required|alpha_numeric_space|min_length[6]|max_length[16]',
+            'password' => 'trim|required|alpha_numeric_punct|min_length[6]|max_length[16]',
         ])) {
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
@@ -90,7 +90,7 @@ class Auth extends BaseController
             'nik' => 'trim|required|is_natural|exact_length[15,16,17]|is_unique[penduduk.nik]',
             'nama' => 'trim|required|alpha_numeric_space',
             'email' => 'trim|required|valid_email|is_unique[user.email]',
-            'password' => 'trim|required|alpha_numeric_space|min_length[6]|max_length[15]',
+            'password' => 'trim|required|alpha_numeric_punct|min_length[6]|max_length[15]',
         ])) {
             $nik = $this->request->getPost('nik');
             $nama = $this->request->getPost('nama');

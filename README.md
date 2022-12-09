@@ -96,3 +96,7 @@ Jika menemukan bug atau kerentanan sistem didalam DKTP, harap laporkan kepada ka
 - akbarmiftahul569@gmail.com
 - rdmfr59@gmail.com
 - japarssidik820@gmail.com
+## Kontak
+- akbarmiftahul569@gmail.com
+- rdmfr59@gmail.com
+- japarssidik820@gmail.com

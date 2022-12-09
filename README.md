@@ -1,101 +1,98 @@
-# CodeIgniter 4 Application Starter
+# Digital-KTP
 
-## What is CodeIgniter?
+## Apa itu Digital-KTP
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](http://codeigniter.com).
+Digital-KTP (D-KTP atau DKTP) adalah perangkat lunak atau sistem yang di gunakan untuk melakukan pembuatan KTP masyarakat berbasis online.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+Fungsi utama sistem D-KTP adalah sebagai sistem untuk masyarakat membuat data diri resmi penduduk dari suatu daerah. KTP sendiri berisikan data diri, mulai dari nama hingga alamat. D-KTP dibuat untuk memudahkan pembuatan KTP dan mutasi masyarakat. Perangkat lunak atau sistem ini dibuat dengan menggunakan sebuah framework php codeigniter4 dengan user interface yang simpel agar memudahkan admin serta user dalam mengakses perangkat lunak atau sistem D-KTP.
 
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
-
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
-
-## Installation & updates
-
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
-
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
-
-## Setup
-
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
-
-## Important Change with index.php
-
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 7.4 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-- xml (enabled by default - don't turn it off)
-
-## Fitur-fitur Aplikasi DKTP
-Ada 3 Hak Akses
+## Fitur-fitur DKTP
+**Ada 3 Hak Akses**
 - Superadmin
-- Admin (petugas/operator daerah)
-- User (penduduk/pembuat ktp)
+- Admin (Petugas/Operator daerah)
+- User (Penduduk/Pembuat ktp)
 
 **Superadmin:**
-1. Login/logout [x]
-2. Melihat Profil [x]
-3. Mengelola Petugas [x]
-    - Melihat
+1. Login/logout
+2. Melihat Profil
+3. Mengelola Petugas
+    - Melihat 
     - Menambah
     - Mengubah
     - Menghapus
-4. Mengelola Approval [x]
-    - Melihat (Detail)
-    - Mengubah (Status **Mengapprove/menolak** beserta tanggapannya)
-    - Menghapus
-5. Melihat Laporan (termasuk mendownload) [x]
+4. Melihat Laporan Approval (termasuk mendownload)
 
 **Admin:**
-1. Login/logout [x]
-2. Melihat Profil [x]
-3. Mengelola Approval [x]
+1. Login/logout
+2. Melihat Profil
+3. Mengelola Approval
     - Melihat (Detail)
-    - Mengubah (Status **Mengapprove/menolak** beserta tanggapannya)
+    - Mengubah (Status **Meng-approve/menolak** beserta tanggapannya)
     - Menghapus
-4. Melihat 'Setting'-an wilayah admin tersebut [x]
-5. Mengubah 'setting' (data wilayah admin tersebut) [x]
+4. Melihat 'Setting'-an wilayah admin tersebut
+5. Mengubah 'setting' (data wilayah admin tersebut)
 
 **User:**
-1. Login/logout [x]
-2. Registrasi Akun [x]
-3. Melihat Profil [x]
-4. Membuat KTP (membuat approval) [x]
-5. Melihat Status Approval [x]
-6. Mutasi [ ]
+1. Login/logout
+2. Registrasi Akun
+3. Melihat Profil
+4. Membuat KTP (membuat approval)
+5. Melihat Status Approval
+6. Mutasi **(Belum Dikembangkan)**
+
+## Dibangun menggunakan
+- Codeigniter 4
+- Bootstrap 5 dengan Template  [Nice Admin](https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/)
+- Library Javascript
+    - JQuery 
+    - DataTables
+
+## Persyaratan Sistem
+1. Code Editor = VSCode (sublime text/vim/dll)
+2. Web Server = Apache (Apache termasuk ke dalam paket XAMPP)
+3. Web Browser = Chrome/Firefox/Safari
+4. Dependency Manager = Composer
+5. PHP Versi 7.4 atau lebih, dengan beberapa ekstensi yang telah terpasang, yaitu:
+    - [intl](http://php.net/manual/en/intl.requirements.php)
+    - [libcurl](http://php.net/manual/en/curl.requirements.php) jika ingin menggunakan library HTTP\CURLRequest
+
+    **Catatan**, Pastikan Ekstensi PHP berikut sudah di aktifkan:
+    - json (aktif secara otomatis, jangan dimantikan!)
+    - xml (aktif secara otomatis, jangan dimantikan!)
+    - [mbstring](http://php.net/manual/en/mbstring.installation.php)
+    - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
+
+
+## Instalasi
+
+Clone repositori ini dengan perintah `git clone https://github.com/Jersk41/dktp.git`, pastikan komputer telah terinstall git atau bisa dengan mendownload zip.
+
+Masuk ke folder dktp, lalu jalankan perintah `composer install` untuk mendownload _dependency_ yang dibutuhkan.
+
+Sebelum menjalankan aplikasi, jalankan perintah `php builds development` kemudian `composer update` agar _dependency_ sesuai dengan proses pengembangan (_development_).
+
+Salin dan rename file `env` menjadi `.env` lalu konfigurasikan web sesuai dengan environment masing-masing, terutama pada bagian baseUrl dan peraturan database.
+
+Buat database pada MySQL dengan nama **dktp**. kemudian kembali ke folder project tersebut dan jalankan perintah `php spark migrate`, pastikan nama database yang dibuat sama dengan nama database pada file `.env`.
+
+Jalankan perintah `php spark db:seed User` untuk membuat 1 akun _default_ di tiap hak akses.
+
+Terakhir, jalankan perintah `php spark serve` untuk membuka aplikasi lewat browser.
+
+## Cara Penggunaan 
+
+## Kontribusi
+DKTP Dev Team:
+- Miftahul Akbar
+- Muhammad Fadhilatur Ramadhan
+- Japar Sidik
+- Noviyanti
+- Nazwa Arraudhah
+Dan terima kasih kepada semua yang ikut berkonstribusi di dalam DKTP.
+## Bugs, Perbaikan & Kerentanan Sistem
+Jika menemukan bug atau kerentanan sistem didalam DKTP, harap laporkan kepada kami pada bagian kontak dibawah ini. Semua permintaan akan segera kami tangani.
+
+## Kontak
+- akbarmiftahul569@gmail.com
+- rdmfr59@gmail.com
+- japarssidik820@gmail.com
